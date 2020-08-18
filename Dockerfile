@@ -10,10 +10,8 @@ RUN apk add libxml2-dev libpng-dev && \
     docker-php-ext-install bcmath xml tokenizer mbstring gd
 
 # Install INTL
-RUN apk update \
-  && apk add zlib1g-dev libicu-dev g++ \
-  && docker-php-ext-configure intl \
-  && docker-php-ext-install intl
+RUN apk add icu-dev 
+RUN docker-php-ext-configure intl && docker-php-ext-install intl
 
 # Install Vapor + Prestissimo (parallel/quicker composer install)
 RUN set -xe && \
