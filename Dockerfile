@@ -6,7 +6,8 @@ LABEL maintainer="Claudio Dekker <claudio@ubient.net>"
 
 # Install required extenstions for laravel
 # https://laravel.com/docs/6.x#server-requirements
-RUN apk add libxml2-dev libpng-dev && \
+RUN apk add libxml2-dev libpng-dev zlib1g-dev libicu-dev g++ && \
+    docker-php-ext-configure intl && \
     docker-php-ext-install bcmath xml tokenizer mbstring gd intl
 
 # Install Vapor + Prestissimo (parallel/quicker composer install)
