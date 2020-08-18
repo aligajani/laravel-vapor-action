@@ -11,7 +11,7 @@ RUN apk add libxml2-dev libpng-dev && \
 
 # Install INTL
 RUN apk update \
-  && apk add -y zlib1g-dev libicu-dev g++ \
+  && apk add zlib1g-dev libicu-dev g++ \
   && docker-php-ext-configure intl \
   && docker-php-ext-install intl
 
