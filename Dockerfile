@@ -10,8 +10,8 @@ RUN apk add libxml2-dev libpng-dev && \
     docker-php-ext-install bcmath xml tokenizer mbstring gd
 
 # Install INTL
-RUN apt-get update \
-  && apt-get install -y zlib1g-dev libicu-dev g++ \
+RUN apk update \
+  && apt add -y zlib1g-dev libicu-dev g++ \
   && docker-php-ext-configure intl \
   && docker-php-ext-install intl
 
