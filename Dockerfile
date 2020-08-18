@@ -6,9 +6,14 @@ LABEL maintainer="Claudio Dekker <claudio@ubient.net>"
 
 # Install required extenstions for laravel
 # https://laravel.com/docs/6.x#server-requirements
-RUN apk add libxml2-dev libpng-dev libicu-dev g++ && \
-    docker-php-ext-configure intl && \
-    docker-php-ext-install bcmath xml tokenizer mbstring gd intl
+RUN apk add libxml2-dev libpng-dev && \
+    docker-php-ext-install bcmath xml tokenizer mbstring gd
+
+# Install INTL
+RUN apt-get update \
+  && apt-get install -y zlib1g-dev libicu-dev g++ \
+  && docker-php-ext-configure intl \
+  && docker-php-ext-install intl
 
 # Install Vapor + Prestissimo (parallel/quicker composer install)
 RUN set -xe && \
